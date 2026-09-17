@@ -42,24 +42,24 @@ class BackupRepositoryImpl @Inject constructor(
 
     override suspend fun exportBackup(fileName: String, destinationUri: String): AppResult<BackupInfo> =
         withContext(ioDispatcher) {
-            val exported = backupManager.exportTo(Uri.parse(destinationUri), fileName)
-            if (exported is AppResult.Failure) {
-                exported
-            } else {
-                val bytes = exported.data
-                val info = backupManager.listBackups().firstOrNull { it.fileName == fileName }
-                    ?: BackupInfo(
-                        fileName = fileName,
-                        filePath = File(backupManager.backupsDir(), fileName).absolutePath,
-                        sizeBytes = bytes,
-                        createdAt = System.currentTimeMillis(),
-                        encrypted = false,
-                        protectedWithPassphrase = false,
-                        databaseVersion = 0,
-                        appVersion = ""
-                    )
-                AppLogger.i(TAG, "Respaldo exportado a destino externo: $fileName ($bytes bytes)")
-                AppResult.Success(info)
+            when (val exported = backupManager.exportTo(Uri.parse(destinationUri), fileName)) {
+                is AppResult.Failure -> exported
+                is AppResult.Success -> {
+                    val bytes = exported.data
+                    val info = backupManager.listBackups().firstOrNull { it.fileName == fileName }
+                        ?: BackupInfo(
+                            fileName = fileName,
+                            filePath = File(backupManager.backupsDir(), fileName).absolutePath,
+                            sizeBytes = bytes,
+                            createdAt = System.currentTimeMillis(),
+                            encrypted = false,
+                            protectedWithPassphrase = false,
+                            databaseVersion = 0,
+                            appVersion = ""
+                        )
+                    AppLogger.i(TAG, "Respaldo exportado a destino externo: $fileName ($bytes bytes)")
+                    AppResult.Success(info)
+                }
             }
         }
 

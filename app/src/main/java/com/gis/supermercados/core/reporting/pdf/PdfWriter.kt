@@ -181,9 +181,9 @@ class PdfWriter(
         }
         setFillColor(color)
         content.writeAscii("BT /${font.resourceName} ${nf(size)} Tf 1 0 0 1 ${nf(startX)} ${nf(y)} Tm ")
-        content.writeByte(PDF_TEXT_OPEN.toInt())
+        content.write(PDF_TEXT_OPEN.toInt())
         content.write(escapeText(clean))
-        content.writeByte(PDF_TEXT_CLOSE.toInt())
+        content.write(PDF_TEXT_CLOSE.toInt())
         content.writeAscii(" Tj ET\n")
     }
 

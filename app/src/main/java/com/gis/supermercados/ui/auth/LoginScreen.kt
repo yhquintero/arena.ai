@@ -241,7 +241,7 @@ fun LoginScreen(
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Switch(
                                 checked = state.seedSampleData,
-                                onValueChange = viewModel::onSeedSampleDataChange,
+                                onCheckedChange = viewModel::onSeedSampleDataChange,
                                 enabled = !state.isLoading
                             )
                             Spacer(Modifier.width(12.dp))
