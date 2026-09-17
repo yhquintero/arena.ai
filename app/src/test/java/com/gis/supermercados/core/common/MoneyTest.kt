@@ -88,7 +88,8 @@ class MoneyTest {
     @Test
     fun fromDecimalYToBigDecimalSonInversos() {
         assertEquals(12_345L, Money.fromDecimal(Money.toDouble(12_345L)))
-        assertEquals(12.345, Money.toDouble(1_234_500L), 0.0001)
+        assertEquals(12_345.0, Money.toDouble(1_234_500L), 0.0001)
+        assertEquals(1_234_500L, Money.fromBigDecimal(Money.toBigDecimal(1_234_500L)))
     }
 
     @Test

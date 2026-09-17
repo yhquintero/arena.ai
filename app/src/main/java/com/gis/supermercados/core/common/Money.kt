@@ -36,14 +36,16 @@ object Money {
 
     /**
      * Interpreta texto escrito por el usuario en cualquier formato comun:
-     * "1234.56", "1.234,56", "$ 1,234.56", "12".
+     * "1234.56", "1.234,56", "$ 1,234.56", "12", "-50" y "(50,00)" (negativos contables).
      * Devuelve null si no es un importe valido.
      */
     fun parse(input: String?): Long? {
         val raw = input?.trim().orEmpty()
         if (raw.isEmpty()) return null
 
-        val negative = raw.startsWith("(") && raw.endsWith(")")
+        // Dos convenciones contables de negativo: entre parentesis "(50,00)" o con signo "-50".
+        // El signo se detecta ANTES de limpiar, porque la limpieza elimina todo lo que no sea digito.
+        val negative = (raw.startsWith("(") && raw.endsWith(")")) || raw.contains('-')
         val cleaned = raw
             .replace(Regex("[^0-9,.]"), "")
             .trim(',', '.')

@@ -19,7 +19,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.Delete
-import androidx.compose.material.icons.rounded.Store
+import androidx.compose.material.icons.rounded.Storefront
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -88,7 +88,7 @@ fun StoresScreen(
             EmptyState(
                 title = stringResource(R.string.stores_empty_title),
                 message = stringResource(R.string.stores_empty_message),
-                icon = Icons.Rounded.Store,
+                icon = Icons.Rounded.Storefront,
                 actionLabel = stringResource(R.string.stores_new),
                 onAction = viewModel::openCreate,
                 modifier = Modifier.padding(padding)

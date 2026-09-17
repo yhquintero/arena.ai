@@ -173,6 +173,18 @@ jobs:
             grep -E "FAILED$|tests? (completed|failed)|AssertionError|expected:" ci.log | head -n 60 || true
             echo '```'
             echo ""
+            echo "#### Mensajes de asercion (XML de resultados)"
+            echo ""
+            echo '```text'
+            if compgen -G "app/build/test-results/testDebugUnitTest/*.xml" > /dev/null; then
+              grep -h -B2 -A4 "<failure" app/build/test-results/testDebugUnitTest/*.xml \
+                | sed -e "s/&#10;/ /g" -e "s/&lt;/</g" -e "s/&gt;/>/g" -e "s/&amp;/\&/g" \
+                | head -n 120
+            else
+              echo "(sin resultados XML)"
+            fi
+            echo '```'
+            echo ""
             echo "<details><summary>Contexto: 40 líneas alrededor del primer error</summary>"
             echo ""
             echo '```text'
