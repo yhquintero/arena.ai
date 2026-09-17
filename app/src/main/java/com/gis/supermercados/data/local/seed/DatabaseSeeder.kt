@@ -211,9 +211,9 @@ class DatabaseSeeder @Inject constructor(
             SeedProduct("Pasta dental 100 ml", "CUI-002", "8508234567891", "Cuidado Personal", 65_00, 110_00, 0.16, ProductUnit.UNIDAD, false, "Importadora Caribe"),
             SeedProduct("Helado de vainilla 1 L", "CON-001", "8509234567890", "Congelados", 130_00, 210_00, 0.16, ProductUnit.UNIDAD, false, "Helados Coppelia"),
             SeedProduct("Nuggets congelados 500 g", "CON-002", "8509234567891", "Congelados", 160_00, 260_00, 0.16, ProductUnit.PAQUETE, false, "Frigorífico Central"),
-            SeedProduct("Servicio de entrega a domicilio", "SER-001", "", "Servicios", 0_00, 250_00, 0.16, ProductUnit.SERVICIO, true, ""),
-            SeedProduct("Recarga de teléfono móvil", "SER-002", "", "Servicios", 0_00, 100_00, 0.16, ProductUnit.SERVICIO, true, ""),
-            SeedProduct("Corte de carne al gusto", "SER-003", "", "Servicios", 0_00, 80_00, 0.16, ProductUnit.SERVICIO, true, "")
+            SeedProduct("Servicio de entrega a domicilio", "SER-001", "", "Servicios", 0, 250_00, 0.16, ProductUnit.SERVICIO, true, ""),
+            SeedProduct("Recarga de teléfono móvil", "SER-002", "", "Servicios", 0, 100_00, 0.16, ProductUnit.SERVICIO, true, ""),
+            SeedProduct("Corte de carne al gusto", "SER-003", "", "Servicios", 0, 80_00, 0.16, ProductUnit.SERVICIO, true, "")
         )
 
         val entities = catalog.map { seed ->
