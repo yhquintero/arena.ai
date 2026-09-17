@@ -1,0 +1,27 @@
+# ---- Gradle / Android Studio ----
+.gradle/
+build/
+app/build/
+local.properties
+*.iml
+.idea/
+.DS_Store
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+*.ap_
+*.dex
+output-metadata.json
+
+# ---- Firmas y secretos (NUNCA versionar) ----
+*.jks
+*.keystore
+keystore.properties
+google-services.json
+
+# ---- Herramientas locales de validación ----
+tools/.venv/
+tools/out/
+__pycache__/

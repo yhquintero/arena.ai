@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- Reportes exportados (PDF/Excel/CSV) -->
+    <external-files-path name="reportes" path="Reportes/" />
+    <!-- Copias de seguridad cifradas -->
+    <external-files-path name="backups" path="Backups/" />
+    <!-- Justificantes de gastos -->
+    <external-files-path name="justificantes" path="Justificantes/" />
+    <!-- Logs internos exportables -->
+    <external-files-path name="logs" path="Logs/" />
+    <files-path name="interno" path="." />
+    <cache-path name="cache" path="." />
+</paths>

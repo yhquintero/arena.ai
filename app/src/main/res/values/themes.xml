@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Tema base sin ActionBar (toda la interfaz es Jetpack Compose) y tema de arranque
+  con SplashScreen API para que el inicio sea inmediato y sin pantalla en blanco.
+-->
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.GisSupermercados" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/brand_primary</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowBackground">@color/splash_background</item>
+    </style>
+
+    <style name="Theme.GisSupermercados.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/splash_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_logo</item>
+        <item name="postSplashScreenTheme">@style/Theme.GisSupermercados</item>
+    </style>
+
+</resources>
