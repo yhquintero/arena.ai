@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  La app gestiona sus propias copias CIFRADAS (ver core/backup).
+  Se excluye todo del backup automatico de Android para evitar fugas de datos
+  sensibles del negocio hacia la nube del fabricante.
+-->
+<full-backup-content>
+    <exclude domain="sharedpref" path="gis_secure_prefs.xml" />
+    <exclude domain="database" path="gis_supermercados.db" />
+    <exclude domain="database" path="gis_supermercados.db-wal" />
+    <exclude domain="database" path="gis_supermercados.db-shm" />
+    <exclude domain="file" path="logs/" />
+</full-backup-content>

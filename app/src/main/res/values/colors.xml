@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Colores de recursos XML (icono y pantalla de inicio). La paleta de la interfaz vive en Brand.kt. -->
+<resources>
+    <color name="brand_primary">#FF0B6E4F</color>
+    <color name="brand_primary_dark">#FF074536</color>
+    <color name="brand_accent">#FFD98324</color>
+    <color name="ic_launcher_background">#FF0B6E4F</color>
+    <color name="splash_background">#FF0B6E4F</color>
+    <color name="splash_icon">#FFFFFFFF</color>
+</resources>

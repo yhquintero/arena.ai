@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude domain="sharedpref" path="gis_secure_prefs.xml" />
+        <exclude domain="database" path="gis_supermercados.db" />
+        <exclude domain="database" path="gis_supermercados.db-wal" />
+        <exclude domain="database" path="gis_supermercados.db-shm" />
+    </cloud-backup>
+    <device-transfer>
+        <include domain="sharedpref" path="." />
+        <include domain="database" path="." />
+        <include domain="file" path="." />
+    </device-transfer>
+</data-extraction-rules>

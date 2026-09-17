@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Variante oscura del tema base (el tema real lo aplica Compose segun la configuracion). -->
+<resources>
+    <style name="Theme.GisSupermercados" parent="android:Theme.Material.NoActionBar">
+        <item name="android:statusBarColor">@color/brand_primary_dark</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowBackground">#FF0F1513</item>
+    </style>
+</resources>
