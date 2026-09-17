@@ -111,7 +111,8 @@ sealed interface Cell {
         is Text -> value
         is Money -> com.gis.supermercados.core.common.Money.format(cents, currencySymbol)
         is Count -> INT_FORMAT.get().format(value)
-        is Decimal -> DECIMAL_FORMATS.get()[decimals.coerceIn(0, 4)].format(value) + suffix
+        is Decimal -> (DECIMAL_FORMATS.get()?.get(decimals.coerceIn(0, 4))?.format(value)
+            ?: value.toString()) + suffix
         is DateCell -> com.gis.supermercados.core.common.AppDateTime.formatDate(millis)
         Empty -> ""
     }

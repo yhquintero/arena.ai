@@ -159,10 +159,38 @@ jobs:
             echo "| \`testDebugUnitTest\` | ${{ steps.unit_tests.outcome }} |"
             echo "| \`assembleRelease bundleRelease\` | ${{ steps.build_release.outcome }} |"
             echo ""
-            echo "<details><summary>Últimas 250 líneas del registro</summary>"
+            echo "#### Errores de compilación (líneas \`e:\` / \`error:\`)"
             echo ""
             echo '```text'
-            tail -n 250 ci.log
+            grep -E "^e: |^error: |error: |What went wrong|^> Task .* FAILED|Caused by: [a-z]" ci.log \
+              | grep -v "org.gradle\|java.lang.RuntimeException\|kotlin.KotlinNothingValueException" \
+              | head -n 150 || echo "(sin coincidencias)"
+            echo '```'
+            echo ""
+            echo "#### Pruebas fallidas (si las hay)"
+            echo ""
+            echo '```text'
+            grep -E "FAILED$|tests? (completed|failed)|AssertionError|expected:" ci.log | head -n 60 || true
+            echo '```'
+            echo ""
+            echo "#### Mensajes de asercion (XML de resultados)"
+            echo ""
+            echo '```text'
+            if compgen -G "app/build/test-results/testDebugUnitTest/*.xml" > /dev/null; then
+              grep -h -B2 -A4 "<failure" app/build/test-results/testDebugUnitTest/*.xml \
+                | sed -e "s/&#10;/ /g" -e "s/&lt;/</g" -e "s/&gt;/>/g" -e "s/&amp;/\&/g" \
+                | head -n 120
+            else
+              echo "(sin resultados XML)"
+            fi
+            echo '```'
+            echo ""
+            echo "<details><summary>Contexto: 40 líneas alrededor del primer error</summary>"
+            echo ""
+            echo '```text'
+            grep -n -m1 -E "^e: |What went wrong" ci.log | cut -d: -f1 | while read -r n; do
+              sed -n "$((n>20 ? n-20 : 1)),$((n+20))p" ci.log
+            done
             echo '```'
             echo "</details>"
           } > ci-error.md

@@ -101,7 +101,7 @@ class PosViewModel @Inject constructor(
                     stores = stores,
                     selectedStoreId = preferredStore,
                     maxDiscountPercent = stores.firstOrNull { store -> store.id == preferredStore }
-                        ?.maxDiscountPercent ?: MAX_DISCOUNT_FALLBACK,
+                        ?.permissions?.maxDiscountPercent ?: MAX_DISCOUNT_FALLBACK,
                     ticketPrefix = settings.ticketPrefix
                 )
             }
@@ -161,7 +161,7 @@ class PosViewModel @Inject constructor(
         _uiState.update { state ->
             state.copy(
                 selectedStoreId = storeId,
-                maxDiscountPercent = state.stores.firstOrNull { it.id == storeId }?.maxDiscountPercent
+                maxDiscountPercent = state.stores.firstOrNull { it.id == storeId }?.permissions?.maxDiscountPercent
                     ?: MAX_DISCOUNT_FALLBACK,
                 cart = emptyList(),
                 globalDiscountPercent = 0

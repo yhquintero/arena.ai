@@ -393,7 +393,7 @@ private fun ReturnDialog(
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
                     }
-                    Switch(checked = restock, onValueChange = onRestockChange)
+                    Switch(checked = restock, onCheckedChange = onRestockChange)
                 }
             }
         },

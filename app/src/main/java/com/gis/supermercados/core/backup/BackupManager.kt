@@ -111,7 +111,7 @@ class BackupManager @Inject constructor(
     fun listBackups(): List<BackupInfo> = runCatching {
         backupsDir().listFiles { file -> file.isFile && file.extension == AppConstants.BACKUP_EXTENSION }
             ?.sortedByDescending { it.lastModified() }
-            ?.mapNotNull { file -> readManifest(file)?.let { it.second to file } }
+            ?.mapNotNull { file -> readManifest(file)?.let { it.first to file } }
             ?.map { (manifest, file) ->
                 BackupInfo(
                     fileName = file.name,

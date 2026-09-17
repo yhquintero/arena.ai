@@ -73,7 +73,7 @@ object Validators {
     }
 
     fun email(value: CharSequence?, optional: Boolean = false): ValidationResult {
-        val text = value?.trim().orEmpty()
+        val text = value?.trim()?.toString().orEmpty()
         if (text.isEmpty()) return if (optional) ValidationResult.Valid else required(text)
         return if (EMAIL_PATTERN.matcher(text).matches()) {
             ValidationResult.Valid
@@ -83,7 +83,7 @@ object Validators {
     }
 
     fun phone(value: CharSequence?, optional: Boolean = true): ValidationResult {
-        val text = value?.trim().orEmpty()
+        val text = value?.trim()?.toString().orEmpty()
         if (text.isEmpty()) return if (optional) ValidationResult.Valid else required(text)
         return if (PHONE_PATTERN.matcher(text).matches()) {
             ValidationResult.Valid
@@ -107,7 +107,7 @@ object Validators {
      * Se aplica en el alta de usuario y en el cambio de contrasena.
      */
     fun password(value: CharSequence?): ValidationResult {
-        val text = value.orEmpty()
+        val text = value?.toString().orEmpty()
         if (text.length < AppConstants.PASSWORD_MIN_LENGTH) {
             return ValidationResult.invalid(
                 R.string.error_password_min_length,
@@ -141,7 +141,7 @@ object Validators {
     }
 
     fun barcode(value: CharSequence?, optional: Boolean = true): ValidationResult {
-        val text = value?.trim().orEmpty()
+        val text = value?.trim()?.toString().orEmpty()
         if (text.isEmpty()) return if (optional) ValidationResult.Valid else required(text)
         return if (BARCODE_PATTERN.matcher(text).matches()) {
             ValidationResult.Valid
@@ -156,7 +156,7 @@ object Validators {
         allowZero: Boolean = true,
         maxCents: Long = MAX_AMOUNT_CENTS,
     ): ValidationResult {
-        val text = value?.trim().orEmpty()
+        val text = value?.trim()?.toString().orEmpty()
         if (text.isEmpty()) return ValidationResult.invalid(R.string.error_field_required)
         val cents = Money.parse(text)
             ?: return ValidationResult.invalid(R.string.error_invalid_amount)
@@ -172,7 +172,7 @@ object Validators {
         max: Int = 1_000_000,
         allowZero: Boolean = true,
     ): ValidationResult {
-        val text = value?.trim().orEmpty()
+        val text = value?.trim()?.toString().orEmpty()
         if (text.isEmpty()) return ValidationResult.invalid(R.string.error_field_required)
         val number = text.toIntOrNull()
             ?: return ValidationResult.invalid(R.string.error_invalid_number)
@@ -183,7 +183,7 @@ object Validators {
     }
 
     fun percent(value: CharSequence?, max: Int = 100): ValidationResult {
-        val text = value?.trim().orEmpty()
+        val text = value?.trim()?.toString().orEmpty()
         if (text.isEmpty()) return ValidationResult.Valid
         val number = text.replace(',', '.').toDoubleOrNull()
             ?: return ValidationResult.invalid(R.string.error_invalid_number)
@@ -194,7 +194,7 @@ object Validators {
     }
 
     fun timeOfDay(value: CharSequence?): ValidationResult {
-        val text = value?.trim().orEmpty()
+        val text = value?.trim()?.toString().orEmpty()
         if (text.isEmpty()) return ValidationResult.invalid(R.string.error_field_required)
         return if (TIME_PATTERN.matcher(text).matches()) {
             ValidationResult.Valid

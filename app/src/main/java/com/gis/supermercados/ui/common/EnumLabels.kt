@@ -10,15 +10,11 @@ import com.gis.supermercados.core.reporting.model.ReportType
 import com.gis.supermercados.domain.model.DocumentType
 import com.gis.supermercados.domain.model.ExpenseCategory
 import com.gis.supermercados.domain.model.LogLevel
-import com.gis.supermercados.core.reporting.model.ExportFormat
-import com.gis.supermercados.core.reporting.model.PeriodType
-import com.gis.supermercados.core.reporting.model.ReportType
 import com.gis.supermercados.domain.model.MovementType
 import com.gis.supermercados.domain.model.PaymentMethod
 import com.gis.supermercados.domain.model.ProductUnit
 import com.gis.supermercados.domain.model.Role
 import com.gis.supermercados.domain.model.SaleStatus
-import com.gis.supermercados.domain.model.ThemeMode
 import com.gis.supermercados.domain.model.ThemeMode
 
 /**

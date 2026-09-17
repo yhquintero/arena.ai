@@ -81,7 +81,7 @@ class ReportRepositoryImpl @Inject constructor(
                 val monthExpenses = queries.expenseTotals(monthStart, monthEnd, null)
                 val monthReturns = queries.returnsTotals(monthStart, monthEnd, null)
 
-                val seriesStart = AppDateTime.startOfDay(AppDateTime.minusDays(referenceMillis, DASHBOARD_SERIES_DAYS - 1))
+                val seriesStart = AppDateTime.startOfDay(AppDateTime.minusDays(referenceMillis, (DASHBOARD_SERIES_DAYS - 1).toLong()))
                 val daily = queries.dailySales(seriesStart, todayEnd, null, timeZoneOffset()).map { it.toDailyTotal() }
                 val dailyExpenses = queries.dailyExpenses(seriesStart, todayEnd, null, timeZoneOffset()).map { it.toDailyExpense() }
 

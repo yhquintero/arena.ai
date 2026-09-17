@@ -91,7 +91,7 @@ data class ExpensesUiState(
     val stores: List<Store> = emptyList(),
     val filterStoreId: Long? = null,
     val filterCategory: ExpenseCategory? = null,
-    val filterPeriod: ExpensePeriod = ExpensePeriod.MONTH,
+    val filterPeriod: ExpensePeriod = ExpensePeriod.MES,
     val query: String = "",
     val showForm: Boolean = false,
     val form: ExpenseForm = ExpenseForm(),
@@ -125,7 +125,7 @@ class ExpensesViewModel @Inject constructor(
 
     private data class Filters(val storeId: Long?, val category: ExpenseCategory?, val period: ExpensePeriod, val query: String?)
 
-    private val filters = MutableStateFlow(Filters(null, null, ExpensePeriod.MONTH, null))
+    private val filters = MutableStateFlow(Filters(null, null, ExpensePeriod.MES, null))
     private val _uiState = MutableStateFlow(ExpensesUiState())
     val uiState: StateFlow<ExpensesUiState> = _uiState
 
